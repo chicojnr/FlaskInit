@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from chat_downloader import ChatDownloader
 from pytube import YouTube
-from gevent.pywsgi import WSGIServer
+from waitress import serve
 import json
 
 app = Flask(__name__)
@@ -47,5 +47,4 @@ def index():
 
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('', 5000), app)
-    http_server.serve_forever()
+    serve(app, host="0.0.0.0", port="5000")
