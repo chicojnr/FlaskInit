@@ -2,3 +2,4 @@ flask
 pytube
 chat-downloader
 urllib3<2
+gevent
