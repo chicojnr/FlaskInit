@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from chat_downloader import ChatDownloader
 from pytube import YouTube
+from gevent.pywsgi import WSGIServer
 import json
 
 app = Flask(__name__)
@@ -28,7 +29,7 @@ def index():
                 message["author"]["badges"] = message["author"]["badges"][0]["title"]
 
             chat_data.append(message)
-            
+
         data = {
             "video": {
                 "title": title,
@@ -46,4 +47,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()
