@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify
 from chat_downloader import ChatDownloader
 from pytube import YouTube
 from waitress import serve
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def index():

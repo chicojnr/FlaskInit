@@ -3,3 +3,4 @@ pytube
 chat-downloader
 urllib3<2
 waitress
+flask-cors
